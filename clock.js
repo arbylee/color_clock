@@ -14,7 +14,16 @@ hour = date.getHours() * 5 // Standardize around 60
 minute = date.getMinutes()
 second = date.getSeconds()
 
-time_data = [hour, minute, second]
+time_data = [{'value': hour, 'radius': 60, 'color': 'cyan'},
+             {'value': minute, 'radius': 40, 'color': 'magenta'},
+             {'value': second, 'radius': 20, 'color': 'yellow'}]
 
-svg.selectAll('.node')
-  .data(time_data)
+var node = svg.selectAll('.node')
+    .data(time_data)
+  .enter().append('g')
+    .attr('class', 'node')
+
+node.append('circle')
+  .attr('r', function(d){ return d.radius; })
+  .attr('fill', function(d){return d.color; })
+  .attr('fill-opacity', '0.3')
