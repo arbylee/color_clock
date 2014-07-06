@@ -19,6 +19,12 @@ svg.append('circle')
   .attr('r', 10)
   .attr('transform', function(d){return 'translate(480, 480)'});
 
+  svg.append('circle')
+    .attr('r', 480)
+    .attr('fill', 'lightgrey')
+    .attr('opacity', 0.4)
+    .attr('transform', function(d){return 'translate(480, 480)'});
+
 var update_clock = function(){
   date = new Date()
   hour = (date.getHours() % 12) * 5 // Standardize around 60
