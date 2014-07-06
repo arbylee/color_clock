@@ -14,6 +14,11 @@ var svg = d3.select('#clock').append('svg')
             .attr('width', width)
             .attr('height', height)
 
+
+svg.append('circle')
+  .attr('r', 10)
+  .attr('transform', function(d){return 'translate(480, 480)'});
+
 var update_clock = function(){
   date = new Date()
   hour = (date.getHours() % 12) * 5 // Standardize around 60
@@ -24,10 +29,6 @@ var update_clock = function(){
                {'value': minute, 'radius': 40, 'color': 'magenta'},
                {'value': second, 'radius': 20, 'color': 'yellow'}]
 
-
-  svg.append('circle')
-    .attr('r', 10)
-    .attr('transform', function(d){return 'translate(480, 480)'});
   nodes = svg.selectAll('.node')
       .data(time_data)
 
