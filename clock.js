@@ -5,8 +5,8 @@ var centerY = height/2;
 
 var getTranslate = function(tick){
   var angle = (360/(60/tick) * Math.PI) / 180;
-  var x = centerX + (420 * Math.sin(angle));
-  var y = centerY - (420 * Math.cos(angle));
+  var x = centerX + (360 * Math.sin(angle));
+  var y = centerY - (360 * Math.cos(angle));
   return 'translate('+ x + ", " + y + ")";
 };
 
@@ -31,9 +31,9 @@ var update_clock = function(){
   minute = date.getMinutes()
   second = date.getSeconds()
 
-  time_data = [{'value': hour, 'radius': 60, 'color': 'cyan'},
-               {'value': minute, 'radius': 40, 'color': 'magenta'},
-               {'value': second, 'radius': 20, 'color': 'yellow'}]
+  time_data = [{'value': hour, 'radius': 120, 'color': 'cyan'},
+               {'value': minute, 'radius': 100, 'color': 'magenta'},
+               {'value': second, 'radius': 80, 'color': 'yellow'}]
 
   nodes = svg.selectAll('.node')
       .data(time_data)
