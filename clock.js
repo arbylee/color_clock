@@ -31,8 +31,8 @@ var update_clock = function(){
   minute = date.getMinutes()
   second = date.getSeconds()
 
-  time_data = [{'value': hour, 'radius': 120, 'color': 'cyan'},
-               {'value': minute, 'radius': 100, 'color': 'magenta'},
+  time_data = [{'value': hour, 'radius': 120, 'color': 'blue'},
+               {'value': minute, 'radius': 100, 'color': 'crimson'},
                {'value': second, 'radius': 80, 'color': 'yellow'}]
 
   nodes = svg.selectAll('.node')
