@@ -10,20 +10,42 @@ var getTranslate = function(tick){
   return 'translate('+ x + ", " + y + ")";
 };
 
+var twelve = {x1: 480, y1: 1, x2: 480, y2: 10}
+var nine = {x1: 0, y1: 480, x2: 10, y2: 480}
+var three = {x1: 960, y1: 480, x2: 950, y2: 480}
+var six = {x1: 480, y1: 950, x2: 480, y2: 960}
+var clockMarkerPoints = [twelve, nine, three, six] 
+
+var drawClockMarkers = function(points){
+  for(var i=0; i < points.length; i++){
+    var clockMarker = points[i];
+    svg.append('line')
+       .attr('stroke', 'white')
+       .attr('stroke-width', '5')
+       .attr('x1', clockMarker.x1)
+       .attr('y1', clockMarker.y1)
+       .attr('x2', clockMarker.x2)
+       .attr('y2', clockMarker.y2)
+  }
+}
+
 var svg = d3.select('#clock').append('svg')
             .attr('width', width)
             .attr('height', height)
 
-
-svg.append('circle')
-  .attr('r', 10)
-  .attr('transform', function(d){return 'translate(480, 480)'});
 
   svg.append('circle')
     .attr('r', 480)
     .attr('fill', 'lightgrey')
     .attr('opacity', 0.4)
     .attr('transform', function(d){return 'translate(480, 480)'});
+
+svg.append('circle')
+  .attr('r', 5)
+  .attr('fill', 'white')
+  .attr('transform', function(d){return 'translate(480, 480)'});
+
+    drawClockMarkers(clockMarkerPoints);
 
 var update_clock = function(){
   date = new Date()
@@ -53,7 +75,7 @@ var update_clock = function(){
 
 var run = function(){
   update_clock()
-  setTimeout(run, 500)
+  setTimeout(run, 1000)
 }
 
 run()
