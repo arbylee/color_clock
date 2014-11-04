@@ -32,8 +32,8 @@ var update_clock = function(){
   second = date.getSeconds()
 
   time_data = [{'value': hour, 'radius': 120, 'color': 'blue'},
-               {'value': minute, 'radius': 100, 'color': 'crimson'},
-               {'value': second, 'radius': 80, 'color': 'yellow'}]
+               {'value': minute, 'radius': 100, 'color': 'yellow'},
+               {'value': second, 'radius': 80, 'color': 'crimson'}]
 
   nodes = svg.selectAll('.node')
       .data(time_data)
@@ -51,10 +51,9 @@ var update_clock = function(){
     .attr('fill-opacity', '0.3');
 }
 
-var foo = function(){
-  console.log('foo')
+var run = function(){
   update_clock()
-  setTimeout(foo, 500)
+  setTimeout(run, 500)
 }
 
-foo()
+run()
