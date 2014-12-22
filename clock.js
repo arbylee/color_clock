@@ -2,11 +2,12 @@ var colorClock = function(){
 
   var diameter = 960;
   var radius = diameter/2;
+  var markerLength = 10;
 
-  var twelve = {x1: 480, y1: 1, x2: 480, y2: 10}
-  var nine = {x1: 0, y1: 480, x2: 10, y2: 480}
-  var three = {x1: 960, y1: 480, x2: 950, y2: 480}
-  var six = {x1: 480, y1: 950, x2: 480, y2: 960}
+  var twelve = {x1: radius, y1: 1, x2: radius, y2: markerLength}
+  var nine = {x1: 0, y1: radius, x2: markerLength, y2: radius}
+  var three = {x1: diameter, y1: radius, x2: (diameter - markerLength), y2: radius}
+  var six = {x1: radius, y1: (diameter - markerLength), x2: radius, y2: diameter}
   var clockMarkerPoints = [twelve, nine, three, six] 
 
   var getTranslate = function(tick){
@@ -62,12 +63,12 @@ var colorClock = function(){
     .attr('r', radius)
     .attr('fill', 'lightgrey')
     .attr('opacity', 0.4)
-    .attr('transform', function(d){return 'translate(480, 480)'});
+    .attr('transform', function(d){return 'translate(' + radius + ', ' + radius + ')'});
 
   svg.append('circle')
     .attr('r', 5)
     .attr('fill', 'white')
-    .attr('transform', function(d){return 'translate(480, 480)'});
+    .attr('transform', function(d){return 'translate(' + radius + ', ' + radius + ')'});
 
   drawClockMarkers(svg, clockMarkerPoints);
 
