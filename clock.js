@@ -1,8 +1,9 @@
 var colorClock = function(){
 
-  var diameter = 960;
+  var diameter = 480;
   var radius = diameter/2;
   var markerLength = 10;
+  var clockHandLength = radius*.75
 
   var twelve = {x1: radius, y1: 1, x2: radius, y2: markerLength}
   var nine = {x1: 0, y1: radius, x2: markerLength, y2: radius}
@@ -12,8 +13,8 @@ var colorClock = function(){
 
   var getTranslate = function(tick){
     var angle = (360/(60/tick) * Math.PI) / 180;
-    var x = radius + (360 * Math.sin(angle));
-    var y = radius - (360 * Math.cos(angle));
+    var x = radius + (clockHandLength * Math.sin(angle));
+    var y = radius - (clockHandLength * Math.cos(angle));
     return 'translate('+ x + ", " + y + ")";
   };
 
@@ -36,9 +37,9 @@ var colorClock = function(){
     minute = date.getMinutes()
     second = date.getSeconds()
 
-    time_data = [{'value': hour, 'radius': 120, 'color': 'blue'},
-      {'value': minute, 'radius': 100, 'color': 'yellow'},
-      {'value': second, 'radius': 80, 'color': 'crimson'}]
+    time_data = [{'value': hour, 'radius': 30, 'color': 'blue'},
+      {'value': minute, 'radius': 25, 'color': 'yellow'},
+      {'value': second, 'radius': 20, 'color': 'crimson'}]
 
     nodes = svg.selectAll('.node').data(time_data)
 
